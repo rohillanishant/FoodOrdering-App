@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.EditAccountActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff">
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:id="@+id/appbar"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            android:elevation="0dp">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                app:titleTextColor="#FC4C3B"
+                app:layout_scrollFlags="scroll|enterAlways"
+                />
+        </com.google.android.material.appbar.AppBarLayout>
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/app_background"
+            android:layout_below="@id/appbar"
+            android:layout_marginTop="40dp"
+            android:drawableLeft="@drawable/ic_profile"
+            android:paddingLeft="4dp"
+            android:elevation="20dp"
+            android:hint="Name (min. 3 characters)"
+            android:inputType="text"
+            android:maxLength="20" />
+
+        <EditText
+            android:id="@+id/etMobileNumber"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:elevation="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/etName"
+            android:layout_marginLeft="20dp"
+            android:drawableLeft="@drawable/ic_phone"
+            android:layout_marginRight="20dp"
+            android:paddingLeft="4dp"
+            android:background="@drawable/app_background"
+            android:hint="Mobile Number (10 digits)"
+            android:inputType="number"
+            android:maxLength="10" />
+
+        <EditText
+            android:id="@+id/etAddress"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:elevation="20dp"
+            android:layout_below="@id/etMobileNumber"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:drawableLeft="@drawable/ic_location"
+            android:paddingLeft="4dp"
+            android:background="@drawable/app_background"
+            android:hint="Delivery Address"
+            android:inputType="text"
+            android:maxLines="3" />
+
+        <Button
+            android:id="@+id/btnUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/etAddress"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="#FC4C3B"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:text="Update Details" />
+
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

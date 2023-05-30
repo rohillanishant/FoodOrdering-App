@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.SettingsFragment">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/btnEditAccount"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:drawableRight="@mipmap/ic_edit2"
+            android:text="Edit Personal Details"
+            android:background="@color/app_color"
+            android:paddingLeft="10dp"
+            android:textColor="#fff"
+            android:textAlignment="viewStart"
+            android:layout_marginTop="80dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            />
+        <Button
+            android:id="@+id/btnClearHistory"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Clear History"
+            android:background="@color/app_color"
+            android:textColor="#fff"
+            android:drawableRight="@mipmap/ic_clear"
+            android:layout_below="@id/btnEditAccount"
+            android:layout_marginTop="40dp"
+            android:textAlignment="viewStart"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:paddingLeft="10dp"
+            />
+        <Button
+            android:id="@+id/btnDeleteAccount"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Delete Account"
+            android:drawableRight="@mipmap/ic_delete"
+            android:layout_below="@id/btnClearHistory"
+            android:background="@color/app_color"
+            android:textColor="#fff"
+            android:textAlignment="viewStart"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            />
+    </RelativeLayout>
+
+</FrameLayout>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.FaqFragment">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txtQ1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Q.1 How can I save a restraunt as my favourite restraunt? "
+                android:textSize="20sp"
+                android:textColor="@color/app_color"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/txtAns1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtQ1"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:text="A.1 You can save a restraunt as favourite by clicking on heart shown above rating."
+                />
+            <TextView
+                android:id="@+id/txtQ2"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/txtAns1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Q.2 Where can I see my favourite restraunts? "
+                android:textSize="20sp"
+                android:textColor="@color/app_color"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/txtAns2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtQ2"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:text="A.2 You can see your favourite restraunts by clicking on the Favourite Restraunts option in the navigation drawer which can be opened by either scrolling from left to right or by clicking on the Hamburger icon at the top left of your screen."
+                />
+            <TextView
+                android:id="@+id/txtQ3"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/txtAns2"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Q.3 Where can I see my personal details? "
+                android:textSize="20sp"
+                android:textColor="@color/app_color"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/txtAns3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtQ3"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:text="A.2 You can see your personal details by clicking the My Profile option in the navigation drawer"
+                />
+            <TextView
+                android:id="@+id/txtQ4"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/txtAns3"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Q.4 I cannot see restraunts in the Home Page."
+                android:textSize="20sp"
+                android:textColor="@color/app_color"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/txtAns4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtQ4"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:text="A.4 Please check your internet connection."
+                />
+        </RelativeLayout>
+    </ScrollView>
+
+</FrameLayout>

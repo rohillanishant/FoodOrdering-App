@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "102167164883",
+    "project_id": "food-runner44",
+    "storage_bucket": "food-runner44.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:102167164883:android:c0500f51f4a4c59598e126",
+        "android_client_info": {
+          "package_name": "com.example.foodorderingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "102167164883-s8rq35efhmpajrdunm4f556iakmlp08t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.foodorderingapp",
+            "certificate_hash": "0a0d628377651615bf3c20af65ca17847af537b8"
+          }
+        },
+        {
+          "client_id": "102167164883-39krnn1vd9n153qko19tnqksrje1d3j0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9p8JrgD-3XAKK4ctuc0HfqAhsFDcrJoY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "102167164883-39krnn1vd9n153qko19tnqksrje1d3j0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

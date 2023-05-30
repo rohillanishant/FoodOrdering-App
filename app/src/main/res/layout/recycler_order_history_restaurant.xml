@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/txtRestaurantName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Restaurant Name"
+        android:layout_marginLeft="30dp"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:id="@+id/txtOrderDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="Date"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"/>
+    <TextView
+        android:id="@+id/txtOrderTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="Time"
+        android:layout_below="@id/txtOrderDate"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"/>
+    <LinearLayout
+        android:layout_marginTop="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:layout_below="@id/txtOrderTime"
+        android:id="@+id/llFood"/>
+    <LinearLayout
+        android:id="@+id/llOrderDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/txtTotalCost"
+        android:background="@color/app_color"
+        android:orientation="horizontal" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Cost"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_below="@id/llFood"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="40dp"/>
+    <TextView
+        android:id="@+id/txtTotalCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Cost"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_below="@id/llFood"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="5dp"
+        android:layout_alignParentRight="true"/>
+
+
+</RelativeLayout>
