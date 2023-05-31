@@ -6,7 +6,7 @@ This is an android online food delivery app. We can order food from a restaurant
 
 # Features :
   *SignUp and SignIn\
-  * Change password by link in email\
+  *Change password by link in email\
   *Add to Favourites\
   *Order History\
   *Payment after adding to Cart
