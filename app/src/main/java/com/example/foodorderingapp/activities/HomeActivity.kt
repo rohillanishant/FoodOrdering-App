@@ -1,9 +1,12 @@
 package com.example.foodorderingapp.activities
 
 import android.app.AlertDialog
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +16,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.app.NotificationCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.foodorderingapp.R
@@ -24,6 +28,15 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
+
+// Notification channel ID
+private const val CHANNEL_ID = "my_channel_id"
+
+// Notification ID
+private const val NOTIFICATION_ID = 1
+
+// Notification channel name
+private const val CHANNEL_NAME = "My Channel"
 
 class HomeActivity : AppCompatActivity() {
     lateinit var sharedPreferences: SharedPreferences
@@ -56,13 +69,16 @@ class HomeActivity : AppCompatActivity() {
                 val mobileNumber=snapshot.child("mobileNumber").getValue()
                 txtUserName.text=name.toString()
                 txtContactDetails.text=mobileNumber.toString()
+                if(sharedPreferences.getBoolean("justLoggedIn",false)){
+                    sharedPreferences.edit().putBoolean("justLoggedIn",false).apply()
+                    showNotification(this@HomeActivity, "Welcome Back , ${name.toString()}", "We are thrilled to have you back!!😋😀")
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
                 Log.e("Firebase", "Error reading data: ${error.message}")
             }
         })
-
 
         headerView.setOnClickListener {
             supportFragmentManager.beginTransaction().replace(R.id.frameLayout, ProfileFragment()).commit()
@@ -176,6 +192,30 @@ class HomeActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
+    fun showNotification(context: Context, title: String, message: String) {
+        // Create notification manager
+        val notificationManager =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        // Create a notification channel for Android 8.0 and higher
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel =
+                NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT)
+            notificationManager.createNotificationChannel(channel)
+        }
+
+        // Create a notification
+        val notification = NotificationCompat.Builder(context, CHANNEL_ID)
+            .setSmallIcon(R.mipmap.ic_logo1_round) // Replace with your own notification icon
+            .setContentTitle(title)
+            .setContentText(message)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setAutoCancel(true)
+            .build()
+
+        // Display the notification
+        notificationManager.notify(NOTIFICATION_ID, notification)
+    }
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         val frag=supportFragmentManager.findFragmentById(R.id.frameLayout)

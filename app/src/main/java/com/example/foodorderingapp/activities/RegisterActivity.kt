@@ -1,12 +1,17 @@
 package com.example.foodorderingapp.activities
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.NotificationCompat
 import com.example.foodorderingapp.R
 import com.example.foodorderingapp.model.User
 import com.google.firebase.auth.FirebaseAuth
@@ -15,6 +20,15 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
+
+// Notification channel ID
+private const val CHANNEL_ID = "my_channel_id"
+
+// Notification ID
+private const val NOTIFICATION_ID = 1
+
+// Notification channel name
+private const val CHANNEL_NAME = "My Channel"
 class RegisterActivity : AppCompatActivity() {
     lateinit var etName: EditText
     lateinit var etEmail: EditText
@@ -110,11 +124,36 @@ class RegisterActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     dbRef=FirebaseDatabase.getInstance().getReference()
                     dbRef.child("user").child(auth.currentUser?.uid!!).setValue(User(auth.currentUser?.uid!!,name,email,mobileNumber,address))
+                    showNotification(this, "Welcome $name to the Food Runner Family", "Explore Restaurants near you and order your favourite meal!!😋")
                     val intent= Intent(this@RegisterActivity, HomeActivity::class.java)
                     startActivity(intent)
                 } else {
                     Toast.makeText(baseContext, "Registration failed.", Toast.LENGTH_SHORT).show()
                 }
             }
+    }
+    fun showNotification(context: Context, title: String, message: String) {
+        // Create notification manager
+        val notificationManager =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        // Create a notification channel for Android 8.0 and higher
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel =
+                NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT)
+            notificationManager.createNotificationChannel(channel)
+        }
+
+        // Create a notification
+        val notification = NotificationCompat.Builder(context, CHANNEL_ID)
+            .setSmallIcon(R.mipmap.ic_logo1_round) // Replace with your own notification icon
+            .setContentTitle(title)
+            .setContentText(message)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setAutoCancel(true)
+            .build()
+
+        // Display the notification
+        notificationManager.notify(NOTIFICATION_ID, notification)
     }
 }

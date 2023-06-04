@@ -2,9 +2,12 @@ package com.example.foodorderingapp.fragments
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,13 +15,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.core.app.NotificationCompat
 import com.example.foodorderingapp.R
-import com.example.foodorderingapp.activities.EditAccountActivity
-import com.example.foodorderingapp.activities.LoginActivity
+import com.example.foodorderingapp.activities.*
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
+// Notification channel ID
+private const val CHANNEL_ID = "my_channel_id"
 
+// Notification ID
+private const val NOTIFICATION_ID = 1
+
+// Notification channel name
+private const val CHANNEL_NAME = "My Channel"
 class SettingsFragment : Fragment() {
     lateinit var btnClearHistory:Button
     lateinit var btnDeleteAccount:Button
@@ -51,6 +61,7 @@ class SettingsFragment : Fragment() {
                 user.delete()           //removing from authentication
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
+                            showNotification(activity as Context, "Your Account Deleted Successfully", "We are sorry to see you go!☹️😥  If you ever decide to come back, we'll be here for you")
                             Toast.makeText(context,"Your account deleted", Toast.LENGTH_SHORT).show()
                         }
                     }
@@ -78,5 +89,29 @@ class SettingsFragment : Fragment() {
             dialog.show()
         }
         return view
+    }
+    fun showNotification(context: Context, title: String, message: String) {
+        // Create notification manager
+        val notificationManager =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        // Create a notification channel for Android 8.0 and higher
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel =
+                NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT)
+            notificationManager.createNotificationChannel(channel)
+        }
+
+        // Create a notification
+        val notification = NotificationCompat.Builder(context, CHANNEL_ID)
+            .setSmallIcon(R.mipmap.ic_logo1_round) // Replace with your own notification icon
+            .setContentTitle(title)
+            .setContentText(message)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setAutoCancel(true)
+            .build()
+
+        // Display the notification
+        notificationManager.notify(NOTIFICATION_ID, notification)
     }
 }

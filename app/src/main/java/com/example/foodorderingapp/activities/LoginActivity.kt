@@ -1,5 +1,4 @@
 package com.example.foodorderingapp.activities
-
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -14,7 +13,6 @@ import com.example.foodorderingapp.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-
 class LoginActivity : AppCompatActivity() {
     lateinit var sharedPreferences: SharedPreferences
     lateinit var txtForgotPassword: TextView
@@ -70,12 +68,12 @@ class LoginActivity : AppCompatActivity() {
 
         }
     }
-
     private fun login(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     sharedPreferences.edit().putBoolean("isLoggedIn",true).apply()
+                    sharedPreferences.edit().putBoolean("justLoggedIn",true).apply()
                     val intent=Intent(this@LoginActivity, HomeActivity::class.java)
                     startActivity(intent)
                 } else {
